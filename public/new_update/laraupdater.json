@@ -1,0 +1,5 @@
+{
+    "version": "3.0.3",
+    "archive": "RELEASE-3.0.3.zip",
+    "description": "+ ADDED Multi-Module support (Grocery & Pharmacy) across the system  <br/>+ ADDED Prescription upload and validation for Pharmacy orders <br/>+ ADDED Prescription upload option in the Pharmacy module cart <br/>ADDED Module selection during seller registration + ADDED Dynamic color management for Categories, Brands, and Countries <br/> + ADDED Bulk delete functionality for Media and Products <br/> + UPDATED Home screen and Website layout <br/>UPDATED Header, category pages, and module switching  <br/> + IMPROVED Product cards, product listing, and search UI <br/>+ UPDATED Seller registration flow and module management   <br/>+ UPDATED Module-wise data management and configuration.<br/>+ FIXED Other improvements and minor bug fixes <br>+UPDATED App codebase upgraded to the latest Flutter version (3.44.0)(customer app, partner app) <br/></span>"
+}
