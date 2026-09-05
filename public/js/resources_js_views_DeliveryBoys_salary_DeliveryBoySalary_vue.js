@@ -16,17 +16,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_daterange_picker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue2_daterange_picker__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-var _name$components$data;
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -139,14 +128,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_name$components$data = {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'DeliveryBoySalary',
   components: {
-    'edit-salary': _EditSalary__WEBPACK_IMPORTED_MODULE_0__["default"]
+    'edit-salary': _EditSalary__WEBPACK_IMPORTED_MODULE_0__["default"],
+    DateRangePicker: (vue2_daterange_picker__WEBPACK_IMPORTED_MODULE_1___default())
   },
   data: function data() {
-    var _ref;
-    return _ref = {
+    return {
       fields: [{
         key: 'id',
         label: __('id'),
@@ -167,9 +156,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         label: __('message'),
         sortable: true,
         "class": 'text-center'
-      },
-      //{ key: 'status', label: __('status'), sortable: true, class: 'text-center' },
-      {
+      }, {
         key: 'paid_on',
         label: __('date'),
         sortable: true,
@@ -197,92 +184,105 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       filterOn: [],
       isLoading: false,
       create_new: null,
-      edit_record: null
-    }, _defineProperty(_ref, "deliveryBoys", []), _defineProperty(_ref, "salaries", []), _defineProperty(_ref, "dateFormat", 'DD-MM-YYYY'), _ref;
+      edit_record: null,
+      salaries: [],
+      showFilters: false,
+      dateFormat: 'DD-MM-YYYY'
+    };
+  },
+  computed: {
+    isSellerRoute: function isSellerRoute() {
+      return this.$route.path.startsWith('/seller/');
+    },
+    isDeliveryBoyRoute: function isDeliveryBoyRoute() {
+      return this.$route.path.startsWith('/delivery_boy/');
+    },
+    pageEnd: function pageEnd() {
+      return Math.min(this.currentPage * this.perPage, this.totalRows);
+    }
   },
   mounted: function mounted() {
     this.totalRows = this.salaries.length;
+  },
+  created: function created() {
+    var _this = this;
+    this.$eventBus.$on('salarySaved', function (message) {
+      _this.showMessage("success", message);
+      _this.getSalaries();
+      _this.create_new = null;
+    });
+    this.getSalaries();
+  },
+  methods: {
+    convertFormat: function convertFormat(format) {
+      if (!format) return 'DD-MM-YYYY';
+      var map = {
+        'd': 'DD',
+        'm': 'MM',
+        'M': 'MMM',
+        'Y': 'YYYY'
+      };
+      return format.replace(/d|m|M|Y/g, function (match) {
+        return map[match] || match;
+      });
+    },
+    formatDate: function formatDate(date) {
+      if (!date) return '';
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format(this.dateFormat);
+    },
+    getSalaries: function getSalaries() {
+      var _this2 = this;
+      this.isLoading = true;
+      var param = {
+        startDate: this.dateRange.startDate ? moment__WEBPACK_IMPORTED_MODULE_2___default()(this.dateRange.startDate).format('YYYY-MM-DD') : "",
+        endDate: this.dateRange.endDate ? moment__WEBPACK_IMPORTED_MODULE_2___default()(this.dateRange.endDate).format('YYYY-MM-DD') : "",
+        delivery_boy_id: this.deliveryBoy
+      };
+      axios.get(this.$apiUrl + '/delivery_boy_salary', {
+        params: param
+      }).then(function (response) {
+        _this2.salaries = response.data.data.salaries;
+        _this2.deliveryBoys = response.data.data.deliveryBoys;
+        _this2.dateFormat = _this2.convertFormat(response.data.data.date_format);
+        _this2.totalRows = _this2.salaries.length;
+        _this2.isLoading = false;
+      });
+    },
+    editRecord: function editRecord(record) {
+      this.edit_record = record;
+    },
+    deleteRecord: function deleteRecord(id) {
+      var _this3 = this;
+      this.$swal.fire({
+        title: __('are_you_sure'),
+        text: __('you_wont_be_able_to_revert_this'),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: __('yes_delete_it'),
+        cancelButtonText: __('cancel')
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios.post(_this3.$apiUrl + '/delivery_boy_salary/delete', {
+            id: id
+          }).then(function (response) {
+            if (response.data.status === 1) {
+              _this3.showMessage("success", response.data.message);
+              _this3.getSalaries();
+            } else {
+              _this3.showError(response.data.message);
+            }
+          });
+        }
+      });
+    },
+    hideModal: function hideModal() {
+      this.create_new = false;
+      this.edit_record = false;
+    }
   }
-}, _defineProperty(_name$components$data, "components", {
-  DateRangePicker: (vue2_daterange_picker__WEBPACK_IMPORTED_MODULE_1___default()),
-  'edit-salary': _EditSalary__WEBPACK_IMPORTED_MODULE_0__["default"]
-}), _defineProperty(_name$components$data, "created", function created() {
-  var _this = this;
-  this.$eventBus.$on('salarySaved', function (message) {
-    _this.showMessage("success", message);
-    _this.getSalaries();
-    _this.create_new = null;
-  });
-  this.getSalaries();
-}), _defineProperty(_name$components$data, "methods", {
-  convertFormat: function convertFormat(format) {
-    if (!format) return 'DD-MM-YYYY';
-    var map = {
-      'd': 'DD',
-      'm': 'MM',
-      'M': 'MMM',
-      'Y': 'YYYY'
-    };
-    return format.replace(/d|m|M|Y/g, function (match) {
-      return map[match] || match;
-    });
-  },
-  formatDate: function formatDate(date) {
-    if (!date) return '';
-    return moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format(this.dateFormat);
-  },
-  getSalaries: function getSalaries() {
-    var _this2 = this;
-    this.isLoading = true;
-    var param = {
-      startDate: this.dateRange.startDate ? moment__WEBPACK_IMPORTED_MODULE_2___default()(this.dateRange.startDate).format('YYYY-MM-DD') : "",
-      endDate: this.dateRange.endDate ? moment__WEBPACK_IMPORTED_MODULE_2___default()(this.dateRange.endDate).format('YYYY-MM-DD') : "",
-      delivery_boy_id: this.deliveryBoy
-    };
-    axios.get(this.$apiUrl + '/delivery_boy_salary', {
-      params: param
-    }).then(function (response) {
-      _this2.salaries = response.data.data.salaries;
-      _this2.deliveryBoys = response.data.data.deliveryBoys;
-      _this2.dateFormat = _this2.convertFormat(response.data.data.date_format);
-      _this2.totalRows = _this2.salaries.length;
-      _this2.isLoading = false;
-    });
-  },
-  editRecord: function editRecord(record) {
-    this.edit_record = record;
-  },
-  deleteRecord: function deleteRecord(id) {
-    var _this3 = this;
-    this.$swal.fire({
-      title: __('are_you_sure'),
-      text: __('you_wont_be_able_to_revert_this'),
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: __('yes_delete_it'),
-      cancelButtonText: __('cancel')
-    }).then(function (result) {
-      if (result.isConfirmed) {
-        axios.post(_this3.$apiUrl + '/delivery_boy_salary/delete', {
-          id: id
-        }).then(function (response) {
-          if (response.data.status === 1) {
-            _this3.showMessage("success", response.data.message);
-            _this3.getSalaries();
-          } else {
-            _this3.showError(response.data.message);
-          }
-        });
-      }
-    });
-  },
-  hideModal: function hideModal() {
-    this.create_new = false;
-    this.edit_record = false;
-  }
-}), _name$components$data);
+});
 
 /***/ }),
 
@@ -809,402 +809,470 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "page-heading" }, [
-        _c("div", { staticClass: "page-title" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-12 col-md-6 order-md-1 order-last" },
-              [_c("h3", [_vm._v(_vm._s(_vm.__("delivery_boy_salary")))])]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-12 col-md-6 order-md-2 order-first" },
-              [
-                _c(
-                  "nav",
-                  {
-                    staticClass: "breadcrumb-header float-start float-lg-end",
-                    attrs: { "aria-label": "breadcrumb" },
-                  },
-                  [
-                    _c("ol", { staticClass: "breadcrumb" }, [
-                      _c(
-                        "li",
-                        { staticClass: "breadcrumb-item" },
-                        [
-                          _c("router-link", { attrs: { to: "/dashboard" } }, [
-                            _vm._v(_vm._s(_vm.__("dashboard"))),
-                          ]),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "li",
-                        {
-                          staticClass: "breadcrumb-item active",
-                          attrs: { "aria-current": "page" },
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm.__("delivery_boy_salary")) +
-                              "\n                            "
-                          ),
-                        ]
-                      ),
-                    ]),
-                  ]
-                ),
-              ]
-            ),
+      _c(
+        "div",
+        {
+          staticClass:
+            "page-heading d-flex justify-content-between align-items-center mb-4",
+        },
+        [
+          _c("h3", { staticClass: "modern-page-title mb-0" }, [
+            _vm._v(_vm._s(_vm.__("delivery_boy_salary"))),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("section", { staticClass: "section" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(_vm.__("delivery_boy_salary"))),
-              ]),
+          _vm._v(" "),
+          _c("nav", { attrs: { "aria-label": "breadcrumb" } }, [
+            _c("ol", { staticClass: "breadcrumb mb-0" }, [
+              _c(
+                "li",
+                { staticClass: "breadcrumb-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-muted",
+                      attrs: {
+                        to: _vm.isSellerRoute
+                          ? "/seller/dashboard"
+                          : _vm.isDeliveryBoyRoute
+                          ? "/delivery_boy/dashboard"
+                          : "/dashboard",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.__("dashboard")))]
+                  ),
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "pull-right" }, [
-                _vm.$can("salary_create")
-                  ? _c(
+              _c(
+                "li",
+                {
+                  staticClass: "breadcrumb-item active text-primary",
+                  attrs: { "aria-current": "page" },
+                },
+                [_vm._v(_vm._s(_vm.__("delivery_boy_salary")))]
+              ),
+            ]),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c("section", { staticClass: "section" }, [
+        _c("div", { staticClass: "figma-main-section-card" }, [
+          _c(
+            "div",
+            { staticClass: "card-body p-0" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center flex-wrap gap-2 figma-action-bar-row",
+                },
+                [
+                  _c("div", { staticClass: "flex-grow-1" }, [
+                    _c("div", { staticClass: "figma-search-container" }, [
+                      _c("i", { staticClass: "fa fa-search text-muted" }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filter,
+                            expression: "filter",
+                          },
+                        ],
+                        staticClass: "figma-search-input",
+                        attrs: {
+                          type: "text",
+                          placeholder: _vm.__("search") || "Search...",
+                        },
+                        domProps: { value: _vm.filter },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.filter = $event.target.value
+                            },
+                            function ($event) {
+                              return _vm.getSalaries()
+                            },
+                          ],
+                        },
+                      }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex gap-2" }, [
+                    _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary",
+                        staticClass:
+                          "btn btn-figma-filter d-flex align-items-center gap-2",
+                        class: { active: _vm.showFilters },
                         on: {
                           click: function ($event) {
-                            _vm.create_new = true
+                            _vm.showFilters = !_vm.showFilters
                           },
                         },
                       },
-                      [_vm._v(_vm._s(_vm.__("add_salary")))]
-                    )
-                  : _vm._e(),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body" },
-              [
-                _c(
-                  "b-row",
-                  { staticClass: "mb-3 align-items-end" },
-                  [
-                    _c("b-col", { attrs: { md: "4" } }, [
-                      _c("h6", { staticClass: "box-title" }, [
-                        _vm._v(_vm._s(_vm.__("from_to_date"))),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "d-flex align-items-center" },
-                        [
-                          _c("date-range-picker", {
-                            attrs: {
-                              "single-date-picker": "range",
-                              autoApply: false,
-                              showDropdowns: true,
-                              maxDate: _vm.maxDate,
-                              opens: "right",
-                              "append-to-body": "",
-                            },
-                            on: { update: _vm.getSalaries },
-                            model: {
-                              value: _vm.dateRange,
-                              callback: function ($$v) {
-                                _vm.dateRange = $$v
-                              },
-                              expression: "dateRange",
-                            },
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-danger ml-1",
-                              on: {
-                                click: function ($event) {
-                                  _vm.dateRange.startDate = null
-                                  _vm.dateRange.endDate = null
-                                  _vm.getSalaries()
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.__("clear")) +
-                                  "\n                                "
-                              ),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { attrs: { md: "3", "offset-md": "4" } },
                       [
-                        _c("h6", [_vm._v(_vm._s(_vm.__("search")))]),
-                        _vm._v(" "),
-                        _c("b-form-input", {
+                        _c("base-icon", {
                           attrs: {
-                            type: "search",
-                            placeholder: _vm.__("search"),
-                          },
-                          model: {
-                            value: _vm.filter,
-                            callback: function ($$v) {
-                              _vm.filter = $$v
-                            },
-                            expression: "filter",
+                            name: "Funnel",
+                            width: "24",
+                            height: "24",
+                            useCurrentColor: "",
                           },
                         }),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(_vm._s(_vm.__("filters") || "Filters")),
+                        ]),
                       ],
                       1
                     ),
                     _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { staticClass: "text-center", attrs: { md: "1" } },
-                      [
-                        _c(
+                    _vm.$can("salary_create")
+                      ? _c(
                           "button",
                           {
-                            directives: [
-                              {
-                                name: "b-tooltip",
-                                rawName: "v-b-tooltip.hover",
-                                modifiers: { hover: true },
-                              },
-                            ],
-                            staticClass: "btn btn-primary ml-2",
-                            attrs: { title: _vm.__("refresh") },
+                            staticClass:
+                              "btn btn-figma-filter d-flex align-items-center gap-2",
                             on: {
                               click: function ($event) {
-                                return _vm.getSalaries()
+                                _vm.create_new = true
                               },
-                            },
-                          },
-                          [_c("i", { staticClass: "fa fa-refresh" })]
-                        ),
-                      ]
-                    ),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "table-responsive" },
-                  [
-                    _c("b-table", {
-                      attrs: {
-                        items: _vm.salaries,
-                        fields: _vm.fields,
-                        "current-page": _vm.currentPage,
-                        "per-page": _vm.perPage,
-                        filter: _vm.filter,
-                        "filter-included-fields": _vm.filterOn,
-                        "sort-by": _vm.sortBy,
-                        "sort-desc": _vm.sortDesc,
-                        "sort-direction": _vm.sortDirection,
-                        bordered: true,
-                        busy: _vm.isLoading,
-                        stacked: "md",
-                        "show-empty": "",
-                        small: "",
-                      },
-                      on: {
-                        "update:sortBy": function ($event) {
-                          _vm.sortBy = $event
-                        },
-                        "update:sort-by": function ($event) {
-                          _vm.sortBy = $event
-                        },
-                        "update:sortDesc": function ($event) {
-                          _vm.sortDesc = $event
-                        },
-                        "update:sort-desc": function ($event) {
-                          _vm.sortDesc = $event
-                        },
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "table-busy",
-                          fn: function () {
-                            return [
-                              _c(
-                                "div",
-                                { staticClass: "text-center text-black my-2" },
-                                [
-                                  _c("b-spinner", {
-                                    staticClass: "align-middle",
-                                  }),
-                                  _vm._v(" "),
-                                  _c("strong", [
-                                    _vm._v(_vm._s(_vm.__("loading")) + "..."),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ]
-                          },
-                          proxy: true,
-                        },
-                        {
-                          key: "head(amount)",
-                          fn: function (data) {
-                            return [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(_vm.__("salary")) +
-                                  _vm._s(" (" + _vm.$currency + ")") +
-                                  "\n                            "
-                              ),
-                            ]
-                          },
-                        },
-                        {
-                          key: "cell(paid_on)",
-                          fn: function (row) {
-                            return [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(_vm.formatDate(row.item.paid_on)) +
-                                  "\n                            "
-                              ),
-                            ]
-                          },
-                        },
-                        {
-                          key: "cell(actions)",
-                          fn: function (row) {
-                            return [
-                              _vm.$can("salary_update")
-                                ? _c(
-                                    "b-button",
-                                    {
-                                      staticClass: "mr-1",
-                                      attrs: { size: "sm", variant: "primary" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.editRecord(row.item)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-pencil-alt",
-                                      }),
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.$can("salary_delete")
-                                ? _c(
-                                    "b-button",
-                                    {
-                                      attrs: { size: "sm", variant: "danger" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.deleteRecord(row.item.id)
-                                        },
-                                      },
-                                    },
-                                    [_c("i", { staticClass: "fa fa-trash" })]
-                                  )
-                                : _vm._e(),
-                            ]
-                          },
-                        },
-                      ]),
-                    }),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  [
-                    _c(
-                      "b-col",
-                      { staticClass: "my-1", attrs: { md: "2" } },
-                      [
-                        _c(
-                          "b-form-group",
-                          {
-                            staticClass: "mb-0",
-                            attrs: {
-                              label: _vm.__("per_page"),
-                              "label-for": "per-page-select",
-                              "label-align-sm": "right",
-                              "label-size": "sm",
                             },
                           },
                           [
-                            _c("b-form-select", {
-                              staticClass: "form-control form-select",
-                              attrs: {
-                                id: "per-page-select",
-                                options: _vm.pageOptions,
-                                size: "sm",
-                              },
-                              model: {
-                                value: _vm.perPage,
-                                callback: function ($$v) {
-                                  _vm.perPage = $$v
-                                },
-                                expression: "perPage",
-                              },
-                            }),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
+                            _c("i", { staticClass: "fa fa-plus" }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v(_vm._s(_vm.__("add_salary")))]),
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
-                      "b-col",
+                      "button",
                       {
-                        staticClass: "my-1",
-                        attrs: { md: "4", "offset-md": "6" },
+                        directives: [
+                          {
+                            name: "b-tooltip",
+                            rawName: "v-b-tooltip.hover",
+                            modifiers: { hover: true },
+                          },
+                        ],
+                        staticClass:
+                          "btn btn-figma-filter d-flex align-items-center gap-2",
+                        attrs: { title: _vm.__("refresh") },
+                        on: {
+                          click: function ($event) {
+                            return _vm.getSalaries()
+                          },
+                        },
                       },
                       [
-                        _c("b-pagination", {
-                          staticClass: "my-0",
-                          attrs: {
-                            "total-rows": _vm.totalRows,
-                            "per-page": _vm.perPage,
-                            align: "fill",
-                            size: "sm",
-                          },
-                          model: {
-                            value: _vm.currentPage,
-                            callback: function ($$v) {
-                              _vm.currentPage = $$v
-                            },
-                            expression: "currentPage",
-                          },
-                        }),
-                      ],
-                      1
+                        _c("i", { staticClass: "fa fa-refresh" }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(_vm.__("refresh")))]),
+                      ]
                     ),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-          ]),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-collapse",
+                {
+                  model: {
+                    value: _vm.showFilters,
+                    callback: function ($$v) {
+                      _vm.showFilters = $$v
+                    },
+                    expression: "showFilters",
+                  },
+                },
+                [
+                  _c("div", { staticClass: "figma-filter-section" }, [
+                    _c("div", { staticClass: "row g-4" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "figma-filter-group" }, [
+                          _c("label", { staticClass: "figma-filter-label" }, [
+                            _vm._v(_vm._s(_vm.__("from_to_date"))),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "d-flex align-items-center gap-2" },
+                            [
+                              _c("date-range-picker", {
+                                attrs: {
+                                  "single-date-picker": "range",
+                                  autoApply: false,
+                                  showDropdowns: true,
+                                  maxDate: _vm.maxDate,
+                                  opens: "right",
+                                  "append-to-body": "",
+                                },
+                                on: { update: _vm.getSalaries },
+                                model: {
+                                  value: _vm.dateRange,
+                                  callback: function ($$v) {
+                                    _vm.dateRange = $$v
+                                  },
+                                  expression: "dateRange",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-danger",
+                                  on: {
+                                    click: function ($event) {
+                                      _vm.dateRange.startDate = null
+                                      _vm.dateRange.endDate = null
+                                      _vm.getSalaries()
+                                    },
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(_vm.__("clear")) +
+                                      "\n                                        "
+                                  ),
+                                ]
+                              ),
+                            ],
+                            1
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "table-responsive" },
+                [
+                  _c("b-table", {
+                    staticClass: "figma-order-table mb-0",
+                    attrs: {
+                      items: _vm.salaries,
+                      fields: _vm.fields,
+                      "current-page": _vm.currentPage,
+                      "per-page": _vm.perPage,
+                      filter: _vm.filter,
+                      "filter-included-fields": _vm.filterOn,
+                      "sort-by": _vm.sortBy,
+                      "sort-desc": _vm.sortDesc,
+                      "sort-direction": _vm.sortDirection,
+                      bordered: false,
+                      busy: _vm.isLoading,
+                      stacked: "md",
+                      "show-empty": "",
+                      "tbody-tr-class": function () {
+                        return "figma-tr align-middle"
+                      },
+                      small: "",
+                    },
+                    on: {
+                      "update:sortBy": function ($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sort-by": function ($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sortDesc": function ($event) {
+                        _vm.sortDesc = $event
+                      },
+                      "update:sort-desc": function ($event) {
+                        _vm.sortDesc = $event
+                      },
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "table-busy",
+                        fn: function () {
+                          return [
+                            _c(
+                              "div",
+                              { staticClass: "text-center text-black my-2" },
+                              [
+                                _c("b-spinner", {
+                                  staticClass: "align-middle",
+                                }),
+                                _vm._v(" "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.__("loading")) + "..."),
+                                ]),
+                              ],
+                              1
+                            ),
+                          ]
+                        },
+                        proxy: true,
+                      },
+                      {
+                        key: "head(amount)",
+                        fn: function (data) {
+                          return [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.__("salary")) +
+                                _vm._s(" (" + _vm.$currency + ")") +
+                                "\n                        "
+                            ),
+                          ]
+                        },
+                      },
+                      {
+                        key: "cell(paid_on)",
+                        fn: function (row) {
+                          return [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.formatDate(row.item.paid_on)) +
+                                "\n                        "
+                            ),
+                          ]
+                        },
+                      },
+                      {
+                        key: "cell(actions)",
+                        fn: function (row) {
+                          return [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex gap-2 justify-content-center",
+                              },
+                              [
+                                _vm.$can("salary_update")
+                                  ? _c(
+                                      "button",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "b-tooltip",
+                                            rawName: "v-b-tooltip.hover",
+                                            modifiers: { hover: true },
+                                          },
+                                        ],
+                                        staticClass: "figma-action-btn",
+                                        attrs: { title: _vm.__("edit") },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.editRecord(row.item)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("base-icon", {
+                                          attrs: {
+                                            name: "edit icon",
+                                            hoverName: "edit Hover",
+                                            width: "24",
+                                            height: "24",
+                                          },
+                                        }),
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.$can("salary_delete")
+                                  ? _c(
+                                      "button",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "b-tooltip",
+                                            rawName: "v-b-tooltip.hover",
+                                            modifiers: { hover: true },
+                                          },
+                                        ],
+                                        staticClass:
+                                          "figma-action-btn figma-delete-btn",
+                                        attrs: { title: _vm.__("delete") },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.deleteRecord(row.item.id)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("base-icon", {
+                                          attrs: {
+                                            name: "Type=Default",
+                                            hoverName: "Type=Hover",
+                                            width: "24",
+                                            height: "24",
+                                          },
+                                        }),
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e(),
+                              ]
+                            ),
+                          ]
+                        },
+                      },
+                    ]),
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "figma-table-footer" },
+                [
+                  _c("div", { staticClass: "showing-results-text" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.__("Showing Result")) +
+                        " : "
+                    ),
+                    _c("span", { staticClass: "showing-bold" }, [
+                      _vm._v(_vm._s(_vm.pageEnd)),
+                    ]),
+                    _vm._v(" " + _vm._s(_vm.__("of") || "of") + " "),
+                    _c("span", { staticClass: "showing-bold" }, [
+                      _vm._v(_vm._s(_vm.totalRows)),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("b-pagination", {
+                    staticClass: "figma-pagination mb-0",
+                    attrs: {
+                      "total-rows": _vm.totalRows,
+                      "per-page": _vm.perPage,
+                      align: "right",
+                    },
+                    model: {
+                      value: _vm.currentPage,
+                      callback: function ($$v) {
+                        _vm.currentPage = $$v
+                      },
+                      expression: "currentPage",
+                    },
+                  }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
         ]),
       ]),
       _vm._v(" "),

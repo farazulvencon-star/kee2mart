@@ -66,6 +66,7 @@
                                 <p v-if="row.item.position === 'below_slider'"> {{ __('below_slider') }}</p>
                                 <p v-if="row.item.position === 'below_category'"> {{ __('below_category') }}</p>
                                 <p v-if="row.item.position === 'below_section'"> {{ __('below_section') }}</p>
+                                <p v-if="row.item.position === 'slider_right'"> {{ __('slider_right') }}</p>
                                 <p v-if="row.item.position === 'top'"> {{ __('top') }}</p>
                             </template>
                             <template #cell(section_position)="row">

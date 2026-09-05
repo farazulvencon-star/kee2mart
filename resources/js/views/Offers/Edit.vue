@@ -62,6 +62,7 @@
                     <label for="position"> {{ __('position') }}<i class="text-danger">*</i></label>
                     <select name="position" id="position" v-model="position" class="form-control form-select">
                         <option value="top"> {{ __('top') }}</option>
+                        <option value="slider_right"> {{ __('slider_right') }}</option>
                         <option value="below_slider"> {{ __('below_slider') }}</option>
                         <option value="below_category"> {{ __('below_category') }}</option>
                         <option value="below_section"> {{ __('below_section') }}</option>
