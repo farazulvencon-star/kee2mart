@@ -157,8 +157,8 @@
                                 </template>
 
                                 <template #cell(image)="row">
-                                    <img :src="row.item.image_url"
-                                        @click="openLightbox(row.item.image_url)" alt="Image" height="50" style="cursor: pointer;" />
+                                    <img :src="getImageUrl(row.item.image)"
+                                        @click="openLightbox(getImageUrl(row.item.image))" alt="Image" height="50" style="cursor: pointer;" />
                                 </template>
 
                                 <template #cell(is_approved)="row">
@@ -527,6 +527,13 @@ export default {
             this.lightboxSources = null;
             this.toggler = false;
 
+        },
+        getImageUrl(image) {
+            if (!image) return '';
+            if (image.startsWith('http://') || image.startsWith('https://')) {
+                return image;
+            }
+            return this.$storageUrl + image;
         },
         getRecords() {
             this.isLoading = true
