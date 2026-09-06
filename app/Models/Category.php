@@ -29,7 +29,11 @@ class Category extends Model
     public function getImageUrlAttribute(){
 
         if($this->image){
-            $image_url = asset('storage/'.$this->image);
+            if (\Illuminate\Support\Str::startsWith($this->image, ['http://', 'https://'])) {
+                $image_url = $this->image;
+            } else {
+                $image_url = asset('storage/'.$this->image);
+            }
             return $image_url;
         }
         return $this->image;

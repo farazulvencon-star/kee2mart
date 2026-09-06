@@ -45,6 +45,56 @@ class ShopApiController extends Controller
         $moduleId = request()->header('X-Module-Id') ?: 1;
 
         $sections = CommonHelper::getSectionWithProduct($seller_ids, $user_id, $moduleId);
+        
+        // --- ADD DYNAMIC CATEGORY SECTIONS ---
+        $categoriesWithProducts = Category::where('status', 1)->where('parent_id', 0)->where('module_id', $moduleId)
+            ->whereHas('products', function ($q) use ($seller_ids, $moduleId) {
+                $q->whereIn('seller_id', $seller_ids)
+                  ->where('status', 1)
+                  ->where('is_approved', 1)
+                  ->where('module_id', $moduleId);
+            })->get();
+
+        foreach ($categoriesWithProducts as $cat) {
+            $catProducts = Product::select(
+                    'products.*',
+                    'products.type as d_type',
+                    'sellers.store_name as seller_name',
+                    'sellers.slug as seller_slug',
+                    'sellers.status as seller_status'
+                )
+                ->leftJoin('sellers', 'products.seller_id', '=', 'sellers.id')
+                ->where('products.category_id', $cat->id)
+                ->whereIn('products.seller_id', $seller_ids)
+                ->where('products.status', 1)
+                ->where('products.is_approved', 1)
+                ->where('products.module_id', $moduleId)
+                ->where('sellers.status', 1)
+                ->limit(8)
+                ->get();
+            
+            $formattedProducts = [];
+            foreach ($catProducts as $product) {
+                $productDetails = CommonHelper::getProductDetails($product->id, $user_id, false);
+                if ($productDetails) {
+                    $formattedProducts[] = $productDetails;
+                }
+            }
+
+            if (count($formattedProducts) > 0) {
+                $virtualSection = [
+                    'id' => 'cat_' . $cat->id,
+                    'title' => $cat->name,
+                    'short_description' => $cat->subtitle ?? '',
+                    'style_web' => 'style_1',
+                    'style_app' => 'style_1',
+                    'position' => 'below_category',
+                    'products' => $formattedProducts
+                ];
+                $sections[] = $virtualSection;
+            }
+        }
+        // --- END DYNAMIC LOGIC ---
 
         $categoryMode = \App\Models\Setting::get_value('category_background_color_mode') ?: 'global';
         $brandMode = \App\Models\Setting::get_value('brand_background_color_mode') ?: 'global';
