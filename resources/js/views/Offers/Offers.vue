@@ -557,7 +557,7 @@ export default {
             // Fallback strategy if image_url fails
             const offer = this.offers.find(o => o.image_url === event.target.src);
             if (offer && offer.image) {
-                event.target.src = this.$storageUrl + offer.image;
+                event.target.src = this.offer.image_url;
             }
         }
     }

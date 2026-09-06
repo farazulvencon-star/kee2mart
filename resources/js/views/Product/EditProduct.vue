@@ -373,7 +373,7 @@
                                                                         v-if="other_images.length !== 0"
                                                                         v-for="(image, index) in other_images">
                                                                         <img class="img-thumbnail custom-image"
-                                                                            :src="$storageUrl + image.image"
+                                                                            :src="image.image_url"
                                                                             title='Other Image' alt='Other Image' />
                                                                         <button type="button"
                                                                             @click="deleteImage(index, image.id, true)"
@@ -592,7 +592,7 @@
                                                         v-if="input.images.length !== 0"
                                                         v-for="(image, index) in input.images">
                                                         <img class="img-thumbnail custom-image"
-                                                            :src="$storageUrl + image.image" title='Variant Image'
+                                                            :src="image.image_url" title='Variant Image'
                                                             alt='Variant Image' />
                                                         <button type="button"
                                                             @click="deleteImage(index, image.id, false, k)"
@@ -677,7 +677,7 @@
                                                             v-if="input.loose_images.length !== 0"
                                                             v-for="(image, index) in input.loose_images">
                                                             <img class="img-thumbnail custom-image"
-                                                                :src="$storageUrl + image.image" title='Variant Image'
+                                                                :src="image.image_url" title='Variant Image'
                                                                 alt='Variant Image' />
                                                             <button type="button"
                                                                 @click="deleteImage(index, image.id, false, k)"
@@ -2166,7 +2166,7 @@ export default {
                         this.is_approved = this.record.is_approved;
                         this.status = this.record.status;
                         this.is_unlimited_stock = this.record.is_unlimited_stock;
-                        this.main_image_path = this.$storageUrl + this.record.image;
+                        this.main_image_path = this.this.record.image_url;
                         this.other_images = this.record.images;
                         this.fssai_lic_no = this.record.fssai_lic_no;
                         this.image = this.record.image;

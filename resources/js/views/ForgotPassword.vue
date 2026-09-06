@@ -22,7 +22,7 @@
                         >
                             <img
                                 v-if="$appLogo != ''"
-                                :src="$storageUrl + $appLogo"
+                                :src="$appLogo"
                                 style="height: 70px; width: 70px"
                                 alt="Logo"
                             />

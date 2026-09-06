@@ -112,7 +112,7 @@
                                     </template>
                                     <template #cell(logo)="row">
                                         <p v-if="row.item.logo === ''" class="mb-0"> {{ __('no_image') }}</p>
-                                        <img :src="$storageUrl + row.item.logo" height="40" class="rounded" v-else />
+                                        <img :src="row.item.logo" height="40" class="rounded" v-else />
                                     </template>
                                     <template #cell(is_default)="row">
                                         <span v-if="row.item.is_default == 1" class="badge bg-success">{{ __('yes')

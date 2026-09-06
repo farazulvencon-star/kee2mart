@@ -71,7 +71,7 @@
                                     {{ row.item.seller_name }}
                                 </template>
                                 <template #cell(image)="row">
-                                    <img :src="$storageUrl + row.item.image" height="50" v-if="row.item.image"/>
+                                    <img :src="row.item.image_url" height="50" v-if="row.item.image"/>
                                 </template>
                                 <template #cell(actions)="row">
                                     <div style="width: 120px">

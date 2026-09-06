@@ -6,7 +6,7 @@
                     <div class="auth-logo">
                         <a href="javascript:void(0)"
                             style="display: flex; align-items: center; justify-content: flex-start;">
-                            <img v-if="$appLogo != ''" :src="$storageUrl + $appLogo" style="height: 70px; width: 70px;"
+                            <img v-if="$appLogo != ''" :src="$appLogo" style="height: 70px; width: 70px;"
                                 alt='Logo' />
                             <img v-else :src="$baseUrl + '/images/logo.png'" style="height: 70px; width: 70px;"
                                 alt='Logo' />

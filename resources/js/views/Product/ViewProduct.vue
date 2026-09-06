@@ -129,7 +129,7 @@
                                                 </td>
                                                 <th class="th-width">{{ __('main_image') }}</th>
                                                 <td>
-                                                    <img :src="$storageUrl + record.image" height="75"
+                                                    <img :src="record.image_url" height="75"
                                                         v-if="record.image" />
                                                 </td>
                                             </tr>
@@ -153,7 +153,7 @@
                                                 <th class="th-width">{{ __('other_images') }}</th>
                                                 <td colspan="3">
                                                     <template v-if="other_images" v-for="image in other_images">
-                                                        <img :src="$storageUrl + image.image" height="75"
+                                                        <img :src="image.image_url" height="75"
                                                             style="margin-right: 2px;" />
                                                     </template>
                                                 </td>

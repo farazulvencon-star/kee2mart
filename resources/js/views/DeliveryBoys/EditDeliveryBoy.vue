@@ -956,9 +956,9 @@ export default {
                         this.deliveryBoys.other_payment_information = emptyIfNull(this.record?.other_payment_information);
 
                         this.deliveryBoys.driving_license = "";
-                        this.deliveryBoys.driving_license_url = this.record ? this.$storageUrl + this.record.driving_license : "";
+                        this.deliveryBoys.driving_license_url = this.record ? this.this.record.driving_license : "";
                         this.deliveryBoys.national_identity_card = "";
-                        this.deliveryBoys.national_identity_card_url = this.record ? this.$storageUrl + this.record.national_identity_card : "";
+                        this.deliveryBoys.national_identity_card_url = this.record ? this.this.record.national_identity_card : "";
 
                         this.deliveryBoys.status = this.record ? this.record.status : 0;
                         this.deliveryBoys.remark = this.record ? this.record.remark : "";

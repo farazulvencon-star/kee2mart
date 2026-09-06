@@ -90,7 +90,7 @@
                                 </template>
 
                                 <template #cell(image)="row">
-                                    <img :src="$storageUrl + row.item.sub_directory + row.item.name" height="50"
+                                    <img :src="row.item.sub_directory + row.item.name" height="50"
                                         v-if="row.item.name" />
                                 </template>
                                 <template #cell(actions)="row">

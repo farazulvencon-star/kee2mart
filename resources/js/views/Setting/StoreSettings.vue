@@ -2099,17 +2099,17 @@ export default {
                 this.city = matched || null;
 
                 if (this.store_settings.logo != "") {
-                    this.logo_url = this.$storageUrl + this.store_settings.logo;
+                    this.logo_url = this.this.store_settings.logo;
                 } else {
                     this.logo_url = this.$baseUrl + '/images/logo.png';
                 }
                 if (this.store_settings.fssai_lic_img != "") {
-                    this.fssai_lic_img_url = this.$storageUrl + this.store_settings.fssai_lic_img;
+                    this.fssai_lic_img_url = this.this.store_settings.fssai_lic_img;
                 } else {
                     this.fssai_lic_img_url = this.$baseUrl + '/images/fssai_lic_img.png';
                 }
                 if (this.store_settings.panel_login_background_img != "") {
-                    this.panel_login_background_img_url = this.$storageUrl + this.store_settings.panel_login_background_img;
+                    this.panel_login_background_img_url = this.this.store_settings.panel_login_background_img;
                 } else {
                     this.panel_login_background_img_url = this.$baseUrl + '/images/panel_login_background_img.png';
                 }

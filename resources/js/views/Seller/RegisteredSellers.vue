@@ -143,7 +143,7 @@
                                 </template>
                                 <template #cell(logo)="row">
                                     <span v-if="!row.item.logo">{{ __('no_image') }}</span>
-                                    <img v-else :src="$storageUrl + row.item.logo" height="50" />
+                                    <img v-else :src="row.item.logo" height="50" />
                                 </template>
                                 <template #cell(created_at)="row">
                                     {{ row.item.created_at }}

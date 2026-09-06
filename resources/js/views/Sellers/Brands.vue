@@ -60,7 +60,7 @@
 
                                 <template #cell(image)="row">
                                     <p v-if="row.item.image ===''">No Image</p>
-                                    <img :src="$storageUrl + row.item.image" height="50" v-else/>
+                                    <img :src="row.item.image_url" height="50" v-else/>
                                 </template>
 
                                 <template #cell(status)="row">

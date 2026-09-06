@@ -157,8 +157,8 @@
                                 </template>
 
                                 <template #cell(image)="row">
-                                    <img :src="$storageUrl + row.item.image"
-                                        @click="openLightbox($storageUrl + row.item.image)" alt="Image" height="50" style="cursor: pointer;" />
+                                    <img :src="row.item.image_url"
+                                        @click="openLightbox(row.item.image_url)" alt="Image" height="50" style="cursor: pointer;" />
                                 </template>
 
                                 <template #cell(is_approved)="row">

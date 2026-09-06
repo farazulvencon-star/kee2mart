@@ -89,7 +89,7 @@
 
                                 <template #cell(logo)="row">
                                     <span v-if="!row.item.logo" class="figma-text-muted">{{ __('no_image') }}</span>
-                                    <img v-else :src="$storageUrl + row.item.logo" class="rounded-3 shadow-sm"
+                                    <img v-else :src="row.item.logo" class="rounded-3 shadow-sm"
                                         height="42" />
                                 </template>
 

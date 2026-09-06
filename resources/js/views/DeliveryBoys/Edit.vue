@@ -255,9 +255,9 @@ export default {
                 bonus: this.record ? this.record.bonus : "",
 
                 driving_license: "",
-                driving_license_url: this.record ? this.$storageUrl + this.record.driving_license : "",
+                driving_license_url: this.record ? this.this.record.driving_license : "",
                 national_identity_card: "",
-                national_identity_card_url: this.record ? this.$storageUrl + this.record.national_identity_card : "",
+                national_identity_card_url: this.record ? this.this.record.national_identity_card : "",
 
                 ifsc_code: this.record ? this.record.ifsc_code : "",
                 bank_name: this.record ? this.record.bank_name : "",

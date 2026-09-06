@@ -108,7 +108,7 @@ export default {
 
                         if (settings.invoice_logo) {
 
-                            this.thermal_logo_url = this.$storageUrl + settings.invoice_logo;
+                            this.thermal_logo_url = this.settings.invoice_logo;
                         }
                     }
                 })

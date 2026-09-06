@@ -47,7 +47,7 @@ class ShopApiController extends Controller
         $sections = CommonHelper::getSectionWithProduct($seller_ids, $user_id, $moduleId);
         
         // --- ADD DYNAMIC CATEGORY SECTIONS ---
-        $categoriesWithProducts = Category::where('status', 1)->where('parent_id', 0)->where('module_id', $moduleId)
+        $categoriesWithProducts = Category::where('status', 1)->where('module_id', $moduleId)
             ->whereHas('products', function ($q) use ($seller_ids, $moduleId) {
                 $q->whereIn('seller_id', $seller_ids)
                   ->where('status', 1)
