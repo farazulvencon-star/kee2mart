@@ -620,23 +620,23 @@ export default {
 
                 // Images
                 this.web_logo_url = this.settings.web_logo
-                    ? this.this.settings.web_logo
+                    ? this.settings.web_logo
                     : this.$baseUrl + '/images/logo.png';
 
                 this.favicon_url = this.settings.favicon
-                    ? this.this.settings.favicon
+                    ? this.settings.favicon
                     : '';
 
                 this.placeholder_image_url = this.settings.placeholder_image
-                    ? this.this.settings.placeholder_image
+                    ? this.settings.placeholder_image
                     : '';
 
                 this.play_store_logo_url = this.settings.play_store_logo
-                    ? this.this.settings.play_store_logo
+                    ? this.settings.play_store_logo
                     : '';
 
                 this.ios_store_logo_url = this.settings.ios_store_logo
-                    ? this.this.settings.ios_store_logo
+                    ? this.settings.ios_store_logo
                     : '';
             });
         },

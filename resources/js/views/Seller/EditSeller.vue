@@ -1824,9 +1824,9 @@ export default {
                         this.status = this.record.status;
                         this.store_logo = this.record.store_logo;
 
-                        this.store_logo_url = this.this.record.logo;
-                        this.national_id_card_url = this.this.record.national_identity_card;
-                        this.address_proof_url = this.this.record.address_proof;
+                        this.store_logo_url = this.record.logo;
+                        this.national_id_card_url = this.record.national_identity_card;
+                        this.address_proof_url = this.record.address_proof;
 
 
                         const marker = {

@@ -2166,7 +2166,7 @@ export default {
                         this.is_approved = this.record.is_approved;
                         this.status = this.record.status;
                         this.is_unlimited_stock = this.record.is_unlimited_stock;
-                        this.main_image_path = this.this.record.image_url;
+                        this.main_image_path = this.record.image_url;
                         this.other_images = this.record.images;
                         this.fssai_lic_no = this.record.fssai_lic_no;
                         this.image = this.record.image;
