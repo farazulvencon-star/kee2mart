@@ -714,37 +714,8 @@ class CommonHelper
 
     public static function getSellerIds($latitude, $longitude)
     {
-
-        // Helper function to convert boundary points to polygon WKT
-        $point = ['lat' => $latitude, 'lng' => $longitude];
-
-        // Retrieve cities with boundary points
-        $cities = City::all();
-
-        $cityIds = [];
-
-        foreach ($cities as $city) {
-            if ($city->geolocation_type == 'polygon') {
-                $polygon = json_decode($city->boundary_points, true);
-
-                if (is_array($polygon) && !empty($polygon) && self::isPointInPolygon($point, $polygon)) {
-                    $cityIds[] = $city->id;
-                }
-            } elseif ($city->geolocation_type == 'circle') {
-                $boundaryPoints  = json_decode($city->boundary_points, true);
-                $radius = $city->radius; // Assuming radius is stored in meters
-
-                if (is_array($boundaryPoints) && !empty($boundaryPoints)) {
-                    $center = $boundaryPoints[0]; // Assuming the first element is the center point
-                    if (self::isPointInCircle($point, $center, $radius)) {
-                        $cityIds[] = $city->id;
-                    }
-                }
-            }
-        }
-
-        $sellerIds = self::getSellerIdsfromCityIds($cityIds);
-        return $sellerIds;
+        // BYPASS: Return all active sellers regardless of location
+        return Seller::where('status', 1)->pluck('id')->toArray();
     }
     public static function isPointInPolygon($point, $polygon)
     {
