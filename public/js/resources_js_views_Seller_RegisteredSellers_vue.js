@@ -1171,10 +1171,7 @@ var render = function () {
                             !row.item.logo
                               ? _c("span", [_vm._v(_vm._s(_vm.__("no_image")))])
                               : _c("img", {
-                                  attrs: {
-                                    src: _vm.$storageUrl + row.item.logo,
-                                    height: "50",
-                                  },
+                                  attrs: { src: row.item.logo, height: "50" },
                                 }),
                           ]
                         },

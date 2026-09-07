@@ -710,7 +710,7 @@ var render = function () {
                             row.item.image
                               ? _c("img", {
                                   attrs: {
-                                    src: _vm.$storageUrl + row.item.image,
+                                    src: row.item.image_url,
                                     height: "50",
                                   },
                                 })

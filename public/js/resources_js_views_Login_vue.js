@@ -249,10 +249,7 @@ var render = function () {
                   _vm.$appLogo != ""
                     ? _c("img", {
                         staticStyle: { height: "70px", width: "70px" },
-                        attrs: {
-                          src: _vm.$storageUrl + _vm.$appLogo,
-                          alt: "Logo",
-                        },
+                        attrs: { src: _vm.$appLogo, alt: "Logo" },
                       })
                     : _c("img", {
                         staticStyle: { height: "70px", width: "70px" },

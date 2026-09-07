@@ -819,7 +819,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return o.image_url === event.target.src;
       });
       if (offer && offer.image) {
-        event.target.src = this.$storageUrl + offer.image;
+        event.target.src = this.offer.image_url;
       }
     }
   }

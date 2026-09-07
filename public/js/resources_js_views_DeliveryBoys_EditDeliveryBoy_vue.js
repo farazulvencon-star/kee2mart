@@ -958,9 +958,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _this5.deliveryBoys.address = emptyIfNull((_this5$record11 = _this5.record) === null || _this5$record11 === void 0 ? void 0 : _this5$record11.address);
           _this5.deliveryBoys.other_payment_information = emptyIfNull((_this5$record12 = _this5.record) === null || _this5$record12 === void 0 ? void 0 : _this5$record12.other_payment_information);
           _this5.deliveryBoys.driving_license = "";
-          _this5.deliveryBoys.driving_license_url = _this5.record ? _this5.$storageUrl + _this5.record.driving_license : "";
+          _this5.deliveryBoys.driving_license_url = _this5.record ? _this5.record.driving_license : "";
           _this5.deliveryBoys.national_identity_card = "";
-          _this5.deliveryBoys.national_identity_card_url = _this5.record ? _this5.$storageUrl + _this5.record.national_identity_card : "";
+          _this5.deliveryBoys.national_identity_card_url = _this5.record ? _this5.record.national_identity_card : "";
           _this5.deliveryBoys.status = _this5.record ? _this5.record.status : 0;
           _this5.deliveryBoys.remark = _this5.record ? _this5.record.remark : "";
           _this5.deliveryBoys.bonus_type = _this5.record ? _this5.record.bonus_type : 0;
@@ -1572,7 +1572,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

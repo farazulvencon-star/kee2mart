@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.thermal_paper_width = parseInt(settings.thermal_paper_width);
           }
           if (settings.invoice_logo) {
-            _this.thermal_logo_url = _this.$storageUrl + settings.invoice_logo;
+            _this.thermal_logo_url = _this.settings.invoice_logo;
           }
         }
       })["catch"](function () {
@@ -185,7 +185,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-image[data-v-7d055d3d] {\n    height: auto;\n    width: 60%;\n    border: 1px solid #ddd;\n    padding: 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-image[data-v-7d055d3d] {\r\n    height: auto;\r\n    width: 60%;\r\n    border: 1px solid #ddd;\r\n    padding: 5px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

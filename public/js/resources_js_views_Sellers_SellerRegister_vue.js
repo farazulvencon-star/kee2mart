@@ -556,7 +556,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#auth[data-v-e3df3948] {\n    overflow: auto !important;\n}\n.auth[data-v-e3df3948] {\n    overflow-y: auto !important;\n}\n.auth-logo[data-v-e3df3948] {\n    padding-bottom: 10px;\n}\n.auth .login-wrapper[data-v-e3df3948] {\n    justify-content: center;\n    align-items: center;\n    padding: 30px 20px;\n    height: auto !important;\n    min-height: 100% !important;\n    overflow: visible !important;\n}\n.auth .detail-card[data-v-e3df3948] {\n    max-width: 95%;\n    width: 100%;\n    max-width: 1100px;\n    margin: 0 auto;\n}\n.auth .content[data-v-e3df3948] {\n    max-height: 70vh;\n    overflow-y: auto;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#auth[data-v-e3df3948] {\r\n    overflow: auto !important;\n}\n.auth[data-v-e3df3948] {\r\n    overflow-y: auto !important;\n}\n.auth-logo[data-v-e3df3948] {\r\n    padding-bottom: 10px;\n}\n.auth .login-wrapper[data-v-e3df3948] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 30px 20px;\r\n    height: auto !important;\r\n    min-height: 100% !important;\r\n    overflow: visible !important;\n}\n.auth .detail-card[data-v-e3df3948] {\r\n    max-width: 95%;\r\n    width: 100%;\r\n    max-width: 1100px;\r\n    margin: 0 auto;\n}\n.auth .content[data-v-e3df3948] {\r\n    max-height: 70vh;\r\n    overflow-y: auto;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -744,10 +744,7 @@ var render = function () {
                 _vm.$appLogo != ""
                   ? _c("img", {
                       staticStyle: { height: "70px", width: "70px" },
-                      attrs: {
-                        src: _vm.$storageUrl + _vm.$appLogo,
-                        alt: "Logo",
-                      },
+                      attrs: { src: _vm.$appLogo, alt: "Logo" },
                     })
                   : _c("img", {
                       staticStyle: { height: "70px", width: "70px" },

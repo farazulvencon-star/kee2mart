@@ -607,6 +607,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.lightboxSources = null;
       this.toggler = false;
     },
+    getImageUrl: function getImageUrl(image) {
+      if (!image) return '';
+      if (image.startsWith('http://') || image.startsWith('https://')) {
+        return image;
+      }
+      return this.$storageUrl + image;
+    },
     getRecords: function getRecords() {
       var _this6 = this;
       this.isLoading = true;
@@ -1635,14 +1642,14 @@ var render = function () {
                               _c("img", {
                                 staticStyle: { cursor: "pointer" },
                                 attrs: {
-                                  src: _vm.$storageUrl + row.item.image,
+                                  src: _vm.getImageUrl(row.item.image),
                                   alt: "Image",
                                   height: "50",
                                 },
                                 on: {
                                   click: function ($event) {
-                                    return _vm.openLightbox(
-                                      _vm.$storageUrl + row.item.image
+                                    _vm.openLightbox(
+                                      _vm.getImageUrl(row.item.image)
                                     )
                                   },
                                 },

@@ -1983,9 +1983,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
           _this13.status = _this13.record.status;
           _this13.store_logo = _this13.record.store_logo;
-          _this13.store_logo_url = _this13.$storageUrl + _this13.record.logo;
-          _this13.national_id_card_url = _this13.$storageUrl + _this13.record.national_identity_card;
-          _this13.address_proof_url = _this13.$storageUrl + _this13.record.address_proof;
+          _this13.store_logo_url = _this13.record.logo;
+          _this13.national_id_card_url = _this13.record.national_identity_card;
+          _this13.address_proof_url = _this13.record.address_proof;
           var marker = {
             lat: parseFloat(_this13.latitude),
             lng: parseFloat(_this13.longitude),
@@ -2654,7 +2654,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* Compact thumb for logo/identity/address previews - keeps layout aligned when multiple are shown */\n.file-preview-thumb[data-v-0c56d16c] {\n    max-height: 80px;\n    max-width: 80px;\n    width: auto;\n    height: auto;\n    -o-object-fit: contain;\n       object-fit: contain;\n    border: 1px solid #ddd;\n    border-radius: 8px;\n    padding: 4px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* Compact thumb for logo/identity/address previews - keeps layout aligned when multiple are shown */\n.file-preview-thumb[data-v-0c56d16c] {\r\n    max-height: 80px;\r\n    max-width: 80px;\r\n    width: auto;\r\n    height: auto;\r\n    -o-object-fit: contain;\r\n       object-fit: contain;\r\n    border: 1px solid #ddd;\r\n    border-radius: 8px;\r\n    padding: 4px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

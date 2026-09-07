@@ -895,10 +895,7 @@ var render = function () {
                                 )
                               : _c("img", {
                                   staticClass: "rounded-3 shadow-sm",
-                                  attrs: {
-                                    src: _vm.$storageUrl + row.item.logo,
-                                    height: "42",
-                                  },
+                                  attrs: { src: row.item.logo, height: "42" },
                                 }),
                           ]
                         },

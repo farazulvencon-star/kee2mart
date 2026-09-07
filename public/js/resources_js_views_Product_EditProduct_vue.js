@@ -2184,7 +2184,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this29.is_approved = _this29.record.is_approved;
           _this29.status = _this29.record.status;
           _this29.is_unlimited_stock = _this29.record.is_unlimited_stock;
-          _this29.main_image_path = _this29.$storageUrl + _this29.record.image;
+          _this29.main_image_path = _this29.record.image_url;
           _this29.other_images = _this29.record.images;
           _this29.fssai_lic_no = _this29.record.fssai_lic_no;
           _this29.image = _this29.record.image;
@@ -3265,7 +3265,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* AI Generate Button Styles */\n.ai-generate-btn[data-v-a901b314] {\n    position: relative;\n    min-width: 200px;\n    transition: all 0.3s ease;\n}\n.ai-generate-btn[data-v-a901b314]:disabled {\n    opacity: 0.9;\n    cursor: not-allowed;\n    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);\n    border-color: #667eea;\n    color: white;\n}\n\n/* AI Spinner Animation */\n.ai-spinner[data-v-a901b314] {\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    border: 2px solid rgba(255, 255, 255, 0.3);\n    border-radius: 50%;\n    border-top-color: #fff;\n    animation: ai-spin-data-v-a901b314 0.8s ease-in-out infinite;\n}\n@keyframes ai-spin-data-v-a901b314 {\nto {\n        transform: rotate(360deg);\n}\n}\n\n/* AI Text Animation - Pulsing effect */\n.ai-text-animate[data-v-a901b314] {\n    animation: ai-pulse-data-v-a901b314 1.5s ease-in-out infinite;\n}\n@keyframes ai-pulse-data-v-a901b314 {\n0%,\n    100% {\n        opacity: 1;\n}\n50% {\n        opacity: 0.6;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* AI Generate Button Styles */\n.ai-generate-btn[data-v-a901b314] {\r\n    position: relative;\r\n    min-width: 200px;\r\n    transition: all 0.3s ease;\n}\n.ai-generate-btn[data-v-a901b314]:disabled {\r\n    opacity: 0.9;\r\n    cursor: not-allowed;\r\n    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);\r\n    border-color: #667eea;\r\n    color: white;\n}\r\n\r\n/* AI Spinner Animation */\n.ai-spinner[data-v-a901b314] {\r\n    display: inline-block;\r\n    width: 16px;\r\n    height: 16px;\r\n    border: 2px solid rgba(255, 255, 255, 0.3);\r\n    border-radius: 50%;\r\n    border-top-color: #fff;\r\n    animation: ai-spin-data-v-a901b314 0.8s ease-in-out infinite;\n}\n@keyframes ai-spin-data-v-a901b314 {\nto {\r\n        transform: rotate(360deg);\n}\n}\r\n\r\n/* AI Text Animation - Pulsing effect */\n.ai-text-animate[data-v-a901b314] {\r\n    animation: ai-pulse-data-v-a901b314 1.5s ease-in-out infinite;\n}\n@keyframes ai-pulse-data-v-a901b314 {\n0%,\r\n    100% {\r\n        opacity: 1;\n}\n50% {\r\n        opacity: 0.6;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5565,9 +5565,7 @@ var render = function () {
                                                                                     "img-thumbnail custom-image",
                                                                                   attrs:
                                                                                     {
-                                                                                      src:
-                                                                                        _vm.$storageUrl +
-                                                                                        image.image,
+                                                                                      src: image.image_url,
                                                                                       title:
                                                                                         "Other Image",
                                                                                       alt: "Other Image",
@@ -6836,9 +6834,7 @@ var render = function () {
                                                             staticClass:
                                                               "img-thumbnail custom-image",
                                                             attrs: {
-                                                              src:
-                                                                _vm.$storageUrl +
-                                                                image.image,
+                                                              src: image.image_url,
                                                               title:
                                                                 "Variant Image",
                                                               alt: "Variant Image",
@@ -7320,9 +7316,7 @@ var render = function () {
                                                               staticClass:
                                                                 "img-thumbnail custom-image",
                                                               attrs: {
-                                                                src:
-                                                                  _vm.$storageUrl +
-                                                                  image.image,
+                                                                src: image.image_url,
                                                                 title:
                                                                   "Variant Image",
                                                                 alt: "Variant Image",

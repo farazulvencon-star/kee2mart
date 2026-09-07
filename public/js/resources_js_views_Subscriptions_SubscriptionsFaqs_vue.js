@@ -1179,7 +1179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.faq-answer[data-v-0512156b] {\n    margin-top: 8px;\n    color: #666;\n    font-size: 14px;\n}\n\n/* Drag and drop styles */\n.ghost[data-v-0512156b] {\n    opacity: 0.5;\n    background: #c8ebfb;\n}\n.chosen[data-v-0512156b] {\n    background: #e3f2fd;\n}\n.dragging[data-v-0512156b] {\n    opacity: 0.8;\n}\n.drag-handle[data-v-0512156b] {\n    cursor: move;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n            user-select: none;\n}\n.drag-handle[data-v-0512156b]:hover {\n    color: #007bff;\n}\n.table tbody tr[data-v-0512156b] {\n    cursor: default;\n}\n.table tbody tr[data-v-0512156b]:hover {\n    background-color: #f8f9fa;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.faq-answer[data-v-0512156b] {\r\n    margin-top: 8px;\r\n    color: #666;\r\n    font-size: 14px;\n}\r\n\r\n/* Drag and drop styles */\n.ghost[data-v-0512156b] {\r\n    opacity: 0.5;\r\n    background: #c8ebfb;\n}\n.chosen[data-v-0512156b] {\r\n    background: #e3f2fd;\n}\n.dragging[data-v-0512156b] {\r\n    opacity: 0.8;\n}\n.drag-handle[data-v-0512156b] {\r\n    cursor: move;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n            user-select: none;\n}\n.drag-handle[data-v-0512156b]:hover {\r\n    color: #007bff;\n}\n.table tbody tr[data-v-0512156b] {\r\n    cursor: default;\n}\n.table tbody tr[data-v-0512156b]:hover {\r\n    background-color: #f8f9fa;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1203,7 +1203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.swal2-container {\n    z-index: 9999 !important;\n}\n.swal2-popup {\n    z-index: 10000 !important;\n}\n.swal2-backdrop-show {\n    z-index: 9998 !important;\n}\n.swal2-container.swal2-backdrop-show {\n    z-index: 9999 !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.swal2-container {\r\n    z-index: 9999 !important;\n}\n.swal2-popup {\r\n    z-index: 10000 !important;\n}\n.swal2-backdrop-show {\r\n    z-index: 9998 !important;\n}\n.swal2-container.swal2-backdrop-show {\r\n    z-index: 9999 !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -266,9 +266,9 @@ __webpack_require__.r(__webpack_exports__);
         dob: this.record ? this.record.dob : "",
         bonus: this.record ? this.record.bonus : "",
         driving_license: "",
-        driving_license_url: this.record ? this.$storageUrl + this.record.driving_license : "",
+        driving_license_url: this.record ? this.record.driving_license : "",
         national_identity_card: "",
-        national_identity_card_url: this.record ? this.$storageUrl + this.record.national_identity_card : "",
+        national_identity_card_url: this.record ? this.record.national_identity_card : "",
         ifsc_code: this.record ? this.record.ifsc_code : "",
         bank_name: this.record ? this.record.bank_name : "",
         bank_account_number: this.record ? this.record.bank_account_number : "",
@@ -954,7 +954,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -978,7 +978,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-xs[data-v-67215efc] {\n    padding: 0.25rem 0.5rem;\n    font-size: 0.75rem;\n    line-height: 1.5;\n    border-radius: 0.2rem;\n}\n.cursor-pointer[data-v-67215efc] {\n    cursor: pointer;\n}\n.bg-light-primary[data-v-67215efc] {\n    background-color: rgba(67, 94, 190, 0.1);\n}\n.bg-light-success[data-v-67215efc] {\n    background-color: rgba(25, 135, 84, 0.1);\n}\n.bg-light-warning[data-v-67215efc] {\n    background-color: rgba(255, 193, 7, 0.1);\n}\n.bg-light-danger[data-v-67215efc] {\n    background-color: rgba(220, 53, 69, 0.1);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-xs[data-v-67215efc] {\r\n    padding: 0.25rem 0.5rem;\r\n    font-size: 0.75rem;\r\n    line-height: 1.5;\r\n    border-radius: 0.2rem;\n}\n.cursor-pointer[data-v-67215efc] {\r\n    cursor: pointer;\n}\n.bg-light-primary[data-v-67215efc] {\r\n    background-color: rgba(67, 94, 190, 0.1);\n}\n.bg-light-success[data-v-67215efc] {\r\n    background-color: rgba(25, 135, 84, 0.1);\n}\n.bg-light-warning[data-v-67215efc] {\r\n    background-color: rgba(255, 193, 7, 0.1);\n}\n.bg-light-danger[data-v-67215efc] {\r\n    background-color: rgba(220, 53, 69, 0.1);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

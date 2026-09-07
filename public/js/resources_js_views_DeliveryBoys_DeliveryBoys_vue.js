@@ -684,9 +684,9 @@ __webpack_require__.r(__webpack_exports__);
         dob: this.record ? this.record.dob : "",
         bonus: this.record ? this.record.bonus : "",
         driving_license: "",
-        driving_license_url: this.record ? this.$storageUrl + this.record.driving_license : "",
+        driving_license_url: this.record ? this.record.driving_license : "",
         national_identity_card: "",
-        national_identity_card_url: this.record ? this.$storageUrl + this.record.national_identity_card : "",
+        national_identity_card_url: this.record ? this.record.national_identity_card : "",
         ifsc_code: this.record ? this.record.ifsc_code : "",
         bank_name: this.record ? this.record.bank_name : "",
         bank_account_number: this.record ? this.record.bank_account_number : "",
@@ -863,7 +863,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_multiselect_dist_vue_multiselect_min_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

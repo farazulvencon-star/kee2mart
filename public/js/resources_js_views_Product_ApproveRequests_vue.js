@@ -1304,15 +1304,13 @@ var render = function () {
                               _c("img", {
                                 staticStyle: { cursor: "pointer" },
                                 attrs: {
-                                  src: _vm.$storageUrl + row.item.image,
+                                  src: row.item.image_url,
                                   alt: "Image",
                                   height: "50",
                                 },
                                 on: {
                                   click: function ($event) {
-                                    return _vm.openLightbox(
-                                      _vm.$storageUrl + row.item.image
-                                    )
+                                    return _vm.openLightbox(row.item.image_url)
                                   },
                                 },
                               }),

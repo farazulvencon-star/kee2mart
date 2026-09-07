@@ -504,7 +504,7 @@ var render = function () {
                             ? _c("p", [_vm._v("No Image")])
                             : _c("img", {
                                 attrs: {
-                                  src: _vm.$storageUrl + row.item.image,
+                                  src: row.item.image_url,
                                   height: "50",
                                 },
                               }),

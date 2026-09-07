@@ -499,7 +499,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.th-width[data-v-696efafb] {\n    width: 170px;\n}\n.card[data-v-696efafb] {\n    border: 1px solid #EDEDED !important;\n    border-radius: 12px !important;\n    overflow: hidden;\n    margin-bottom: 24px;\n}\n.card-header[data-v-696efafb] {\n    border-bottom: 1px solid #EDEDED !important;\n    background-color: #FFFFFF !important;\n    padding: 1rem 1.25rem !important;\n}\n.card-body[data-v-696efafb] {\n    padding: 1.5rem !important;\n}\n.table-responsive[data-v-696efafb] {\n    border: none !important;\n    background: transparent !important;\n}\n.table[data-v-696efafb] {\n    margin-bottom: 0 !important;\n}\n.table-bordered[data-v-696efafb],\n.table-bordered th[data-v-696efafb],\n.table-bordered td[data-v-696efafb] {\n    border: 1px solid #EDEDED !important;\n}\n.table thead th[data-v-696efafb] {\n    background-color: #F8F9FA !important;\n    border-bottom-width: 1px !important;\n}\n\n/* Dark Mode Styles */\nbody.theme-dark .card[data-v-696efafb] {\n    background-color: #1e293b !important;\n    border-color: #334155 !important;\n}\nbody.theme-dark .card-header[data-v-696efafb] {\n    background-color: #1e293b !important;\n    border-bottom-color: #334155 !important;\n}\nbody.theme-dark .card-header h4[data-v-696efafb] {\n    color: #f1f5f9 !important;\n}\nbody.theme-dark .table-bordered[data-v-696efafb],\nbody.theme-dark .table-bordered th[data-v-696efafb],\nbody.theme-dark .table-bordered td[data-v-696efafb] {\n    border-color: #334155 !important;\n    background-color: #1e293b !important;\n    color: #f1f5f9 !important;\n}\nbody.theme-dark .table thead th[data-v-696efafb] {\n    background-color: #334155 !important;\n    color: #f1f5f9 !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.th-width[data-v-696efafb] {\r\n    width: 170px;\n}\n.card[data-v-696efafb] {\r\n    border: 1px solid #EDEDED !important;\r\n    border-radius: 12px !important;\r\n    overflow: hidden;\r\n    margin-bottom: 24px;\n}\n.card-header[data-v-696efafb] {\r\n    border-bottom: 1px solid #EDEDED !important;\r\n    background-color: #FFFFFF !important;\r\n    padding: 1rem 1.25rem !important;\n}\n.card-body[data-v-696efafb] {\r\n    padding: 1.5rem !important;\n}\n.table-responsive[data-v-696efafb] {\r\n    border: none !important;\r\n    background: transparent !important;\n}\n.table[data-v-696efafb] {\r\n    margin-bottom: 0 !important;\n}\n.table-bordered[data-v-696efafb],\r\n.table-bordered th[data-v-696efafb],\r\n.table-bordered td[data-v-696efafb] {\r\n    border: 1px solid #EDEDED !important;\n}\n.table thead th[data-v-696efafb] {\r\n    background-color: #F8F9FA !important;\r\n    border-bottom-width: 1px !important;\n}\r\n\r\n/* Dark Mode Styles */\nbody.theme-dark .card[data-v-696efafb] {\r\n    background-color: #1e293b !important;\r\n    border-color: #334155 !important;\n}\nbody.theme-dark .card-header[data-v-696efafb] {\r\n    background-color: #1e293b !important;\r\n    border-bottom-color: #334155 !important;\n}\nbody.theme-dark .card-header h4[data-v-696efafb] {\r\n    color: #f1f5f9 !important;\n}\nbody.theme-dark .table-bordered[data-v-696efafb],\r\nbody.theme-dark .table-bordered th[data-v-696efafb],\r\nbody.theme-dark .table-bordered td[data-v-696efafb] {\r\n    border-color: #334155 !important;\r\n    background-color: #1e293b !important;\r\n    color: #f1f5f9 !important;\n}\nbody.theme-dark .table thead th[data-v-696efafb] {\r\n    background-color: #334155 !important;\r\n    color: #f1f5f9 !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -990,7 +990,7 @@ var render = function () {
                           _vm.record.image
                             ? _c("img", {
                                 attrs: {
-                                  src: _vm.$storageUrl + _vm.record.image,
+                                  src: _vm.record.image_url,
                                   height: "75",
                                 },
                               })
@@ -1056,7 +1056,7 @@ var render = function () {
                                     _c("img", {
                                       staticStyle: { "margin-right": "2px" },
                                       attrs: {
-                                        src: _vm.$storageUrl + image.image,
+                                        src: image.image_url,
                                         height: "75",
                                       },
                                     }),
